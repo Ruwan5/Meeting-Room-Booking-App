@@ -1,0 +1,84 @@
+
+<!-- <div style="align-content: flex-end;">
+  <button type="button" class="btn btn-outline-success">Add +</button>
+</div> -->
+<!-- <div *igIf="rooms == [] " class="spinner-border text-primary"></div> -->
+
+<div *ngIf="!this.divflag">
+  <h3>Available Meeting Rooms</h3>
+  <ul  class="list-group list-group-flush" >
+    <li *ngFor="let room of rooms" class="list-group-item"  (click) = getDetails(name)>
+      <div class="card mb-3" style="max-width: 540px;" >
+
+        <div   class="row g-0">
+          <div class="col-md-4" style="align-self: center; ">
+            <img   src="{{room.img}}" alt="..." width=" 140px" height="100px" >
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <div #name><h2 class="card-title" >{{room.name}}</h2></div>
+
+              <p class="card-text">{{room.description}}</p>
+              <p class="card-text"><small class="text-muted">Location: {{room.location}}</small></p>
+              <div hidden>{{room._id}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+
+<div *ngIf="this.divflag">
+  <h3> Meeting Rooms Details</h3>
+  <div class="card" style="width: 65rem;">
+    <img src="{{this.selsectedRoom['img']}}" class="card-img-top" alt="..." width="525px" height="450px">
+    <div class="card-body">
+      <h2 class="card-title">{{this.selsectedRoom['name']}}</h2>
+      <p class="card-text"><small>{{this.selsectedRoom['description']}}</small></p>
+      <p class="card-text"><small>Location: {{this.selsectedRoom['location']}}</small></p>
+
+      <div  *ngIf="this.currentUser.role == 'user' " >
+        <form [formGroup] = "formdata" (ngSubmit) = "onClickSubmit(formdata.value)">
+
+          <div class="form-group">
+            <label  class="col-2 col-form-label">Select Date</label>
+
+              <input class="form-control" formControlName="date" type="date"  id="example-date-input" required>
+
+          </div>
+
+          <div class="form-group">
+            <label  class="col-2 col-form-label">Select Time</label>
+            <select class="form-control" formControlName="time" id="time" required>
+              <option id="1" value="8-9">8am - 9am</option>
+              <option id="2" value="9-10">9am - 10am</option>
+              <option id="3" value="10-11">10am - 11am</option>
+              <option id="4" value="11-12">11am - 12pm</option>
+              <option id="5" value="12-13">12pm - 1pm</option>
+              <option id="6" value="13-14">1pm - 2pm</option>
+              <option id="7" value="14-15">2pm - 3pm</option>
+              <option id="8" value="15-16">3pm - 4pm</option>
+              <option id="9" value="16-17">4pm - 5pm</option>
+              <option id="10" value="17-18">5pm - 6pm</option>
+            </select>
+          </div>
+
+
+          <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
+          <button type="submit" class="btn btn-outline-success" [disabled]="!formdata.valid">Book Now</button>
+
+        </form>
+      </div>
+      <div class="form-inline" style="align-content: flex-end;">
+        <button (click)="back()" type="button" class="btn btn-outline-primary">Back</button>
+
+        <!-- <button *ngIf="this.currentUser.role == 'admin' " (click)="back()" type="button" class="btn btn-outline-danger">Remove</button> -->
+      </div>
+
+
+
+    </div>
+  </div>
+</div>

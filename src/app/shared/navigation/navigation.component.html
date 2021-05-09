@@ -1,0 +1,37 @@
+<div class="sidebar hidden-sm-down">
+    <ul class="nav in" id="side-menu">
+        <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+            <!-- input-group -->
+            <div class="input-group custom-search-form">
+                <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+            <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span></div>
+            <!-- /input-group -->
+        </li>
+        <li class="user-pro">
+            <a class="text-center">
+                <div class="profile-img">
+                    <img src="https://visualpharm.com/assets/319/Male%20User-595b40b65ba036ed117d3de6.svg"/>
+                </div>
+                <span>{{this.currentUser.fullName}}</span>
+                <small class="text-center">{{this.currentUser.role}}</small>
+                <small class="text-center">{{this.currentUser.email}}</small>
+            </a>
+        </li>
+        <li>
+            <a [routerLink]="['/dashboard']" [routerLinkActive]="['active']" class="waves-effect"><i class="fa fa-home"></i> <span
+                class="hide-menu">Home</span></a>
+
+        </li>
+
+        <!-- <li *ngIf="this.currentUser.role == 'admin'">
+            <a  [routerLink]="['/tables']" [routerLinkActive]="['active']">
+                <i class="fa fa-bars"></i>
+                <span class="hide-menu">Users</span>
+            </a>
+        </li> -->
+
+
+
+    </ul>
+</div>
